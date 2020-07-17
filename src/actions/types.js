@@ -1,6 +1,4 @@
-// Add List Action
-
-export const CONSTANTS = {
-    ADD_CARD: "ADD_CARD",
-    ADD_LIST: "ADD_LIST"
-};
+// Add Action
+export const ADD_CARD = "ADD_CARD";
+export const ADD_LIST = "ADD_LIST";
+export const DELETE_LIST = "DELETE_LIST";

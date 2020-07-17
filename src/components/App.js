@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
-import TrelloList from './TrelloList'
+import List from './List'
 import { connect } from "react-redux"
-import TrelloActionButton from './TrelloActionButton'
-import './app.css'
-
+import AddButton from './AddButton'
 
 class App extends Component {
     render() {
         const { lists } = this.props
+        console.log(lists, "Initial Lists");
         return (
             <div className="App">
-                <h1 style={{ textAlign: "center", color: "white" }}>Trello App</h1>
-                <div style={styles.listContainer}>
-                    {lists.map(list => <TrelloList key={list.id} title={list.title} cards={list.cards} />)}
-                    {/* <TrelloList title="test"/> */}
-                    <TrelloActionButton list />
+                <h1 className="text-center">Trello App</h1>
+                <div className="boards">
+                    {lists.map(list => <List key={list.id} title={list.title} cards={list.cards} />)}
+                    <AddButton list />
                 </div>
             </div>
         );
     }
 }
 
-const styles = {
-    listContainer: {
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "row"
-    }
-}
-
-const mapStateToProps = state => ({  // coventional name
-    lists: state.lists // come from index.js de listReducer
+const mapStateToProps = state => ({
+    lists: state.lists
 })
 
 export default connect(mapStateToProps)(App);
